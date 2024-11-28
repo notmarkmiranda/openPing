@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- App Display Name -->
+  <key>CFBundleName</key>
+  <string>Open Ping</string>
+  
+  <!-- Bundle Identifier -->
+  <key>CFBundleIdentifier</key>
+  <string>org.markmiranda.openPing</string>
+  
+  <!-- Background Modes -->
+  <key>UIBackgroundModes</key>
+	<array>
+		<string>processing</string>
+	</array>
+	
+  <!-- Background Task Scheduler Permitted Identifiers -->
+  <key>BGTaskSchedulerPermittedIdentifiers</key>
+  <array>
+    <string>org.markmiranda.openPing.backgroundping</string>
+  </array>
+</dict>
+</plist>

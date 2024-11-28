@@ -5,13 +5,12 @@
 //  Created by Mark Miranda on 11/24/24.
 //
 
-import Testing
-@testable import openPing
+import Foundation
 
-struct openPingTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    }
-
+extension URLSession {
+  static func mockSession() -> URLSession {
+    let config = URLSessionConfiguration.ephemeral
+    config.protocolClasses = [MockURLProtocol.self]
+    return URLSession(configuration: config)
+  }
 }
