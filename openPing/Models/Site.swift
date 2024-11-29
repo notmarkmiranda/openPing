@@ -96,7 +96,6 @@ struct Site: Identifiable, Hashable, Codable {
   func ping() async -> Site {
     var updatedSite = self
     guard let url = URL(string: self.url) else {
-      // Invalid URL, mark as failed and update timestamps
       updatedSite.isSuccess = false
       updatedSite.lastPingedAt = Date()
       return updatedSite
