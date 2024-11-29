@@ -11,18 +11,26 @@ struct SiteRowView: View {
   let site: Site
   var onEdit: () -> Void
   var onDelete: () -> Void
+  var onToggleActive: () -> Void
   
   var body: some View {
     HStack {
-        RoundedRectangle(cornerRadius: 4)
-            .fill(site.isSuccess ? Color.green : Color.red)
-            .frame(width: 20) // Fixed width
-            .frame(maxHeight: .infinity) // Fill row height
+        RoundedRectangle(cornerRadius: 8)
+            .fill(site.statusColor)
+            .frame(width: 20)
+            .frame(maxHeight: .infinity)
             .padding(.trailing, 8)
         
         VStack(alignment: .leading, spacing: 4) {
-          Text(site.url)
-            .font(.headline)
+          HStack {
+            Text(site.url)
+              .font(.headline)
+            if !site.isActive {
+              Text("(Paused)")
+                .font(.caption)
+                .foregroundColor(.gray)
+            }
+          }
           Text("Frequency: \(site.frequency) seconds")
             .font(.subheadline)
             .foregroundColor(.secondary)
@@ -49,6 +57,15 @@ struct SiteRowView: View {
             Label("Edit", systemImage: "pencil")
         }
         .tint(.blue)
+
+        // Toggle active button
+        Button {
+            onToggleActive()
+        } label: {
+            Label(site.isActive ? "Pause" : "Resume",
+                  systemImage: site.isActive ? "pause.fill" : "play.fill")
+        }
+        .tint(site.isActive ? .orange : .green)
     }
   }
 }
@@ -59,7 +76,8 @@ struct SiteRowView_Previews: PreviewProvider {
         SiteRowView(
             site: Site(url: "https://example.com", frequency: 30, isSuccess: true),
             onEdit: {},
-            onDelete: {}
+            onDelete: {},
+            onToggleActive: {}
         )
         .previewLayout(.sizeThatFits)
     }

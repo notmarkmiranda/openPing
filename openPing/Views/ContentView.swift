@@ -31,6 +31,9 @@ struct ContentView: View {
                 onDelete: {
                   siteToDelete = site
                   showDeleteConfirmation = true
+                },
+                onToggleActive: {
+                  viewModel.toggleSiteActive(site)
                 }
               )
             }

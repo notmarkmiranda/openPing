@@ -10,16 +10,5 @@
   <key>CFBundleIdentifier</key>
   <string>org.markmiranda.openPing</string>
   
-  <!-- Background Modes -->
-  <key>UIBackgroundModes</key>
-	<array>
-		<string>processing</string>
-	</array>
-	
-  <!-- Background Task Scheduler Permitted Identifiers -->
-  <key>BGTaskSchedulerPermittedIdentifiers</key>
-  <array>
-    <string>org.markmiranda.openPing.backgroundping</string>
-  </array>
 </dict>
 </plist>
